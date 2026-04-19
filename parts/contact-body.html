@@ -1,0 +1,22 @@
+<h1 class="content-title">お問い合わせ</h1>
+<p class="contact-content">お問い合わせはこちらからお願いします</p>
+<form id="contactForm" action="./contact.php" method="post" class="contact-form">
+    <div class="contact-form-item-wrapper">
+        <div class="contact-form-item">
+            <label class="contact-form-label" for="name">お名前</label>
+            <input class="contact-form-input" type="text" id="name" name="name">
+        </div>
+        <p id="nameError" class="error"></p>
+        <div class="contact-form-item">
+            <label class="contact-form-label" for="email">メールアドレス</label>
+            <input class="contact-form-input" type="email" id="email" name="email">
+        </div>
+        <p id="emailError" class="error"></p>
+        <div class="contact-form-item-textarea">
+            <label class="contact-form-label textarea-label" for="message">メッセージ</label>
+            <textarea class="contact-form-textarea" id="message" name="message"></textarea>
+        </div>
+        <p id="messageError" class="error"></p>
+    </div>
+</form>
+<button type="submit" form="contactForm" class="contact-form-button">送信</button>

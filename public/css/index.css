@@ -1,0 +1,174 @@
+.content-wrapper {
+    background-image: url(../img/top_528.webp);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.page-slot--top {
+    min-height: calc(100vh - 80px);
+    justify-content: center;
+}
+
+.page-slot--top .logo-wrapper {
+    width: 100%;
+    padding: 50px 100px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.top-logo {
+    display: block;
+    width: 525px;
+    height: 200px;
+}
+
+.top-text-wrapper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #222;
+    padding-top: 80px;
+}
+
+.top-text-title,
+.top-text-content,
+.top-text-signature {
+    width: 70%;
+    margin: 10px auto;
+}
+
+.top-text-content {
+    text-align: justify;
+}
+
+.top-text-signature {
+    display: flex;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+    .top-text-title,
+    .top-text-content,
+    .top-text-signature-person {
+        font-size: 20px;
+        line-height: 1.2;
+        font-weight: 500;
+    }
+
+    .top-text-signature-brand {
+        font-size: 24px;
+        line-height: 1.2;
+        font-weight: 600;
+        margin-right: 10px;
+    }
+
+
+.top-text-license-wrapper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-right: 200px;
+    margin-top: 80px;
+}
+
+.top-text-license-list {
+    width: 380px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.top-text-license-item {
+    font-size: 16px;
+    height: 18px;
+    font-weight: 500;
+    margin: 5px;
+    color: #222;
+}
+
+.qr-code-wrapper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-right: 50px;
+    margin-top: 50px;
+}
+
+.qr-code {
+    width: 135px;
+    height: 132px;
+}
+
+@media screen and (max-width: 562px) {
+    .page-slot--top .logo-wrapper {
+        justify-content: center;
+        padding: 15px;
+    }
+
+    .top-logo {
+        width: 300px;
+        height: auto;
+    }
+
+    .top-text-wrapper {
+        width: 90%;
+        margin: 0 auto;
+        padding: 15px 0;
+    }
+
+    .top-text-title,
+    .top-text-content {
+        width: 100%;
+        line-height: 1.2;
+    }
+
+    .top-text-title,
+    .top-text-content,
+    .top-text-signature-person {
+        font-size: 16px;
+    }
+
+
+    .top-text-signature {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .top-text-signature-brand {
+        font-size: 18px;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .top-text-license-wrapper {
+        width: 90%;
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .top-text-license-list {
+        width: 100%;
+        justify-content: center;
+        align-items: flex-start;
+        margin: 0 auto;
+    }
+
+}

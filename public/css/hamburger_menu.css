@@ -1,0 +1,157 @@
+/* 狭い画面: ヘッダー内のハンバーガー位置だけ微調整（すりガラスバー本体は common.css） */
+@media (max-width: 1023px) {
+    .site-header {
+        padding: 0 16px;
+    }
+}
+
+.hamburger-menu {
+    font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+    color: #fff;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.hamburger-menu .hamburger-button {
+    width: 60px;
+    height: 60px;
+    border: 0;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.14);
+    display: grid;
+    place-content: center;
+    gap: 8px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.hamburger-menu .hamburger-button:focus {
+    outline: none;
+}
+
+.hamburger-menu .hamburger-button:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+.hamburger-menu .hamburger-line {
+    height: 2px;
+    margin-bottom: 5px;
+    background: #fff;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.hamburger-menu .hamburger-line-1 {
+    width: 45px;
+}
+
+.hamburger-menu .hamburger-line-2 {
+    width: 40px;
+}
+
+.hamburger-menu .hamburger-line-3 {
+    width: 35px;
+}
+
+.hamburger-menu .global-nav {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    gap: 18px;
+    background-color: rgba(0, 0, 0, 0.35);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+        url("../img/hamburger_menu_back.webp");
+    background-position: center, center;
+    background-repeat: repeat, repeat;
+    background-size: contain, contain;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.hamburger-menu .global-nav a {
+    text-decoration: none;
+    color: #fff;
+    font-size: clamp(24px, 4vw, 44px);
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.hamburger-menu .global-nav a:link,
+.hamburger-menu .global-nav a:visited {
+    color: #fff;
+}
+
+.hamburger-menu .global-nav a:focus {
+    outline: none;
+}
+
+.hamburger-menu .global-nav a:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 6px;
+}
+
+.hamburger-menu .global-nav a:active {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.hamburger-menu .global-nav.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@media (min-width: 1024px) {
+    .hamburger-menu {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 28px;
+    }
+
+    .hamburger-menu .hamburger-button {
+        display: none;
+    }
+
+    .hamburger-menu .global-nav {
+        position: static;
+        inset: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 28px;
+        width: auto;
+        height: auto;
+        min-height: 0;
+        padding: 0;
+        opacity: 1;
+        pointer-events: auto;
+        background: none;
+        background-image: none;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+
+    .hamburger-menu .global-nav a {
+        font-size: 24px;
+        text-align: right;
+        color: #fff;
+        white-space: nowrap;
+    }
+
+    .hamburger-menu .global-nav a:link,
+    .hamburger-menu .global-nav a:visited {
+        color: #fff;
+    }
+
+    .hamburger-menu .global-nav a:active {
+        color: rgba(255, 255, 255, 0.85);
+    }
+
+    .hamburger-menu .global-nav.is-open {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}

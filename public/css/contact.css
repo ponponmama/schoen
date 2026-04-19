@@ -1,0 +1,109 @@
+.content-title {
+    font-size: 40px;
+    height: 80px;
+    line-height: 80px;
+    margin: 0 0 10px 20px;
+}
+
+.contact-content {
+    font-size: 24px;
+    height: 50px;
+    line-height: 50px;
+    font-weight: 400;
+    margin: 10px 20px;
+}
+
+.contact-form {
+    width: 1000px;
+    padding: 20px;
+}
+
+.contact-form-item-wrapper {
+    width: 1000px;
+    height: 750px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fdfdff;
+    border: 1px solid rgba(10, 9, 31, 0.45);
+    box-shadow: 8px 8px 12px rgba(10, 9, 31, 0.45);
+}
+
+.contact-form-item {
+    width: 800px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.contact-form-label {
+    width: 200px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 24px;
+}
+
+.contact-form-input {
+    width: 600px;
+    height: 100%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.contact-form-item-textarea {
+    width: 800px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.textarea-label {
+    width: 800px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 24px;
+    text-align: left;
+}
+
+
+.contact-form-textarea {
+    width: 800px;
+    height: 350px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.contact-form-input,
+.contact-form-textarea {
+    outline: none;
+    border: 1px solid rgba(10, 9, 31, 0.45);
+    background-color: #fff;
+}
+
+.contact-form-button {
+    width: 200px;
+    height: 70px;
+    line-height: 70px;
+    font-size: 24px;
+    background-color: #fff;
+    color: #222;
+    border: 1px solid rgba(10, 9, 31, 0.45);
+    border-radius: 10px;
+    box-shadow: 8px 8px 12px rgba(10, 9, 31, 0.45);
+    margin: 50px auto;
+}
+
+.error {
+    height: 20px;
+    line-height: 20px;
+    color: #ff0000;
+    font-size: 16px;
+    margin: 0;
+}

@@ -1,0 +1,54 @@
+.content-title {
+    width: 100%;
+    font-size: 40px;
+    height: 80px;
+    line-height: 80px;
+    margin: 0 0 10px 20px;
+    text-align: center;
+}
+
+.access-hero {
+    width: 1500px;
+    height: 800px;
+    background-image: url(../img/access.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.access-card {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+}
+
+.access-info {
+    width: 600px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.access-info-title {
+    font-size: 32px;
+    line-height: 60px;
+    margin: 0;
+}
+
+.access-line {
+    font-size: 30px;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.access-map-img {
+    width: 700px;
+    height: 500px;
+    object-fit: cover;
+}
+
+
