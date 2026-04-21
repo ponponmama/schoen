@@ -1,3 +1,4 @@
+/* Top page content wrapper & Top page background image */
 .content-wrapper {
     background-image: url(../img/top_528.webp);
     background-position: center;
@@ -6,7 +7,6 @@
 }
 
 .page-slot--top {
-    min-height: calc(100vh - 80px);
     justify-content: center;
 }
 
@@ -33,6 +33,7 @@
     justify-content: center;
     color: #222;
     padding-top: 80px;
+    letter-spacing: 0.07em;
 }
 
 .top-text-title,
@@ -95,11 +96,12 @@
 .top-text-license-item {
     font-size: 16px;
     height: 18px;
+    line-height: 18px;
     font-weight: 500;
     margin: 5px;
     color: #222;
 }
-
+/* Instagram QR Code wrapper */
 .qr-code-wrapper {
     width: 100%;
     height: auto;
@@ -108,15 +110,78 @@
     align-items: flex-end;
     justify-content: flex-end;
     padding-right: 50px;
-    margin-top: 50px;
+    margin: 80px 0 50px 0;
 }
-
+/* Instagram QR Code image */
 .qr-code {
     width: 135px;
     height: 132px;
 }
 
-@media screen and (max-width: 562px) {
+@media screen and (min-width: 540px) and (max-width: 1024px) {
+    .page-slot--top .logo-wrapper {
+        justify-content: center;
+        padding: 15px;
+    }
+
+    .top-logo {
+        width: 300px;
+        height: auto;
+    }
+
+    .top-text-wrapper {
+        width: 70%;
+        margin: 0 auto;
+        padding: 15px 0;
+    }
+
+    .top-text-title,
+    .top-text-content {
+        width: 100%;
+    }
+
+    .top-text-title,
+    .top-text-content,
+    .top-text-signature-person {
+        font-size: 16px;
+    }
+
+
+    .top-text-signature {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .top-text-signature-brand {
+        font-size: 18px;
+        margin: 0;
+    }
+
+    .top-text-license-wrapper {
+        width: 65%;
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .top-text-license-list {
+        width: 100%;
+        justify-content: center;
+        align-items: flex-start;
+        margin: 0;
+    }
+
+    .top-text-license-item{
+        font-size: 15px;
+    }
+
+    .qr-code-wrapper {
+        margin: 15px auto;
+    }
+
+}
+
+@media screen and (max-width: 539px) {
     .page-slot--top .logo-wrapper {
         justify-content: center;
         padding: 15px;
@@ -136,7 +201,6 @@
     .top-text-title,
     .top-text-content {
         width: 100%;
-        line-height: 1.2;
     }
 
     .top-text-title,
@@ -144,7 +208,6 @@
     .top-text-signature-person {
         font-size: 16px;
     }
-
 
     .top-text-signature {
         flex-direction: column;
@@ -154,7 +217,6 @@
 
     .top-text-signature-brand {
         font-size: 18px;
-        font-weight: 700;
         margin: 0;
     }
 
@@ -171,4 +233,11 @@
         margin: 0 auto;
     }
 
+    .top-text-license-item{
+        font-size: 15px;
+    }
+
+    .qr-code-wrapper {
+        margin: 15px auto;
+    }
 }

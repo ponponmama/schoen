@@ -20,6 +20,7 @@ function closeMenu(toggleButton, menuPanel) {
     toggleButton.setAttribute("aria-expanded", "false");
     toggleButton.classList.remove("is-open");
     menuPanel.classList.remove("is-open");
+    document.querySelector(".site-header")?.classList.remove("is-menu-open");
 }
 
 function initHamburgerMenu(root) {
@@ -35,6 +36,7 @@ function initHamburgerMenu(root) {
         toggleButton.setAttribute("aria-expanded", String(nextIsOpen));
         toggleButton.classList.toggle("is-open", nextIsOpen);
         menuPanel.classList.toggle("is-open", nextIsOpen);
+        document.querySelector(".site-header")?.classList.toggle("is-menu-open", nextIsOpen);
     });
 
     menuPanel.querySelectorAll("a[href]").forEach((link) => {
