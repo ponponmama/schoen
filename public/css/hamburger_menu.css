@@ -1,5 +1,5 @@
 /* 狭い画面: ヘッダー内のハンバーガー位置だけ微調整（すりガラスバー本体は common.css） */
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
     .site-header {
         padding: 0 16px;
     }
@@ -10,7 +10,6 @@
         -webkit-backdrop-filter: none;
         backdrop-filter: none;
     }
-
 }
 
 .hamburger-menu {

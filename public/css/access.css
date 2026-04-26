@@ -1,15 +1,11 @@
-.content-title {
-    width: 100%;
-    font-size: 40px;
-    height: 80px;
-    line-height: 80px;
-    margin: 0 0 10px 20px;
-    text-align: center;
-}
-
+/* access.webp は 1500×884。枠の比を同じにすると cover で歪み・不自然な切り抜きを防げる */
 .access-hero {
-    width: 1500px;
-    height: 800px;
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    aspect-ratio: 1500 / 884;
+    height: auto;
+    min-height: 0;
     background-image: url(../img/access.webp);
     background-size: cover;
     background-position: center;
@@ -49,6 +45,48 @@
     width: 700px;
     height: 500px;
     object-fit: cover;
+}
+
+@media screen and (min-width: 540px) and (max-width: 1024px) {
+    .access-card {
+        width: 80%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .access-map-img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .access-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        width: 90%;
+        height: auto;
+    }
+
+    .access-info-title {
+        font-size: 24px;
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .access-line {
+        font-size: 20px;
+    }
+
+    .access-mail {
+        font-size: 20px;
+    }
+
 }
 
 

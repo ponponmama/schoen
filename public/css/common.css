@@ -54,7 +54,6 @@
 
 .content-wrapper {
     width: 100%;
-    /* min-height: calc(100vh - 80px); */
     background-color: #F7F7FA;
     display: flex;
     flex-direction: column;
@@ -73,3 +72,99 @@
     min-height: calc(100vh - 80px);
 }
 
+.content-title {
+    --title-line-grad-1: rgba(3, 3, 88, 0.95);
+    --title-line-grad-2: rgba(3, 3, 88, 0.2);
+    position: relative;
+    width: max-content;
+    font-size: 40px;
+    height: 80px;
+    line-height: 80px;
+    margin: 20px auto;
+    padding: 0 20px;
+    text-align: center;
+    animation: slideIn 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* 左下: 横は左から長く、上への縦は短い */
+.content-title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0.2rem;
+    width: 90%;
+    height: 50%;
+    border: none;
+    background:
+        linear-gradient(180deg, var(--title-line-grad-1), var(--title-line-grad-2)) 0 0 / 3px 100% no-repeat,
+        linear-gradient(90deg, var(--title-line-grad-1), var(--title-line-grad-2)) 0 100% / 100% 3px no-repeat;
+    box-sizing: border-box;
+    transform-origin: left bottom;
+    transform: scale(0, 0);
+    opacity: 0;
+    pointer-events: none;
+    animation: lineCornerBL 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* 右上: 横は右から長く、下への縦は短い */
+.content-title::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0.2rem;
+    width: 90%;
+    height: 50%;
+    border: none;
+    background:
+        linear-gradient(90deg, var(--title-line-grad-1), var(--title-line-grad-2)) 0 0 / 100% 3px no-repeat,
+        linear-gradient(180deg, var(--title-line-grad-1), var(--title-line-grad-2)) 100% 0 / 3px 100% no-repeat;
+    box-sizing: border-box;
+    transform-origin: right top;
+    transform: scale(0, 0);
+    opacity: 0;
+    pointer-events: none;
+    animation: lineCornerTR 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(180px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+    }
+    40%,100% {
+        opacity: 1;
+    }
+}
+
+@keyframes lineCornerTR {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+}
+
+@keyframes lineCornerBL {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 539px) {
+    .content-title {
+        font-size: 24px;
+        height: 60px;
+        line-height: 60px;
+    }
+}
