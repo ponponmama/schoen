@@ -57,6 +57,7 @@
     outline: none;
     border: 1px solid rgba(10, 9, 31, 0.45);
     background-color: #fff;
+    font-size: 24px;
 }
 
 /* お問い合わせフォームlabel＆textarea　親要素*/
@@ -84,6 +85,8 @@
     height: 350px;
     padding: 10px;
     border-radius: 10px;
+    font-size: 24px;
+    line-height: 24px;
 }
 
 /* お問い合わせフォームbutton */
@@ -98,6 +101,22 @@
     border-radius: 10px;
     box-shadow: 8px 8px 12px rgba(10, 9, 31, 0.45);
     margin: 50px auto;
+}
+
+.contact-status {
+    min-height: 28px;
+    margin: 0 auto 24px;
+    font-size: 18px;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.contact-status.is-success {
+    color: #1106a7;
+}
+
+.contact-status.is-error {
+    color: #ff0000;
 }
 
 /* お問い合わせフォームバリデーション */
@@ -196,6 +215,12 @@
         font-size: 13px;
         height: 20px;
         line-height: 20px;
+    }
+
+    .contact-status {
+        font-size: 14px;
+        min-height: 22px;
+        margin-bottom: 16px;
     }
 }
 

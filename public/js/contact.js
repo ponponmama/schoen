@@ -2,6 +2,43 @@ function setError(errorElement, message) {
     errorElement.textContent = message;
 }
 
+const CONTACT_DRAFT_KEY = "schoen:contact:draft";
+
+function saveDraft(fields) {
+    const draft = {
+        name: fields.nameInput.value,
+        email: fields.emailInput.value,
+        message: fields.messageInput.value
+    };
+    sessionStorage.setItem(CONTACT_DRAFT_KEY, JSON.stringify(draft));
+}
+
+function restoreDraft(fields) {
+    const raw = sessionStorage.getItem(CONTACT_DRAFT_KEY);
+    if (!raw) return;
+    try {
+        const draft = JSON.parse(raw);
+        fields.nameInput.value = draft.name || "";
+        fields.emailInput.value = draft.email || "";
+        fields.messageInput.value = draft.message || "";
+    } catch (_) {
+        sessionStorage.removeItem(CONTACT_DRAFT_KEY);
+    }
+}
+
+function clearDraft() {
+    sessionStorage.removeItem(CONTACT_DRAFT_KEY);
+}
+
+function setStatus(statusElement, message, type = "") {
+    if (!statusElement) return;
+    statusElement.textContent = message;
+    statusElement.classList.remove("is-success", "is-error");
+    if (type) {
+        statusElement.classList.add(type);
+    }
+}
+
 function clearErrors(errorElements) {
     errorElements.forEach((element) => {
         element.textContent = "";
@@ -45,6 +82,7 @@ function validateContactForm(fields) {
 function initContactForm() {
     const form = document.querySelector(".contact-form");
     const submitButton = document.querySelector(".contact-form-button");
+    const statusElement = document.querySelector("#contactStatus");
 
     if (!form || !submitButton) return false;
     if (form.dataset.contactInit === "1") return true;
@@ -60,17 +98,60 @@ function initContactForm() {
 
     const hasAllFields = Object.values(fields).every(Boolean);
     if (!hasAllFields) return false;
+    restoreDraft(fields);
 
-    const handleSubmit = (event) => {
+    [fields.nameInput, fields.emailInput, fields.messageInput].forEach((input) => {
+        input.addEventListener("input", () => saveDraft(fields));
+    });
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
+        setStatus(statusElement, "");
         const isValid = validateContactForm(fields);
-        if (isValid) {
-            form.submit();
+        if (!isValid) {
+            saveDraft(fields);
+            setStatus(statusElement, "入力内容を確認してください。", "is-error");
+            return;
+        }
+
+        submitButton.disabled = true;
+        setStatus(statusElement, "送信中です...", "");
+
+        try {
+            const response = await fetch(form.action, {
+                method: "POST",
+                body: new FormData(form),
+                headers: {
+                    Accept: "application/json"
+                }
+            });
+            const data = await response.json();
+
+            if (!response.ok || !data.ok) {
+                if (data.fieldErrors && typeof data.fieldErrors === "object") {
+                    setError(fields.nameError, data.fieldErrors.name || "");
+                    setError(fields.emailError, data.fieldErrors.email || "");
+                    setError(fields.messageError, data.fieldErrors.message || "");
+                    setStatus(statusElement, "入力内容を確認してください。", "is-error");
+                    return;
+                }
+                setStatus(statusElement, data.message || "送信に失敗しました。", "is-error");
+                return;
+            }
+
+            setStatus(statusElement, data.message || "送信が完了しました。", "is-success");
+            form.reset();
+            clearErrors([fields.nameError, fields.emailError, fields.messageError]);
+            clearDraft();
+        } catch (error) {
+            saveDraft(fields);
+            setStatus(statusElement, "通信に失敗しました。時間をおいて再度お試しください。", "is-error");
+        } finally {
+            submitButton.disabled = false;
         }
     };
 
     form.addEventListener("submit", handleSubmit);
-    submitButton.addEventListener("click", handleSubmit);
     form.dataset.contactInit = "1";
     return true;
 }
