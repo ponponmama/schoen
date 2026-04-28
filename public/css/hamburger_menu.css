@@ -12,18 +12,20 @@
     }
 }
 
+/* ハンバーガーメニュー */
 .hamburger-menu {
     font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
     color: #fff;
     -webkit-tap-highlight-color: transparent;
 }
 
+/* ハンバーガーメニュー button */
 .hamburger-menu .hamburger-button {
     width: 60px;
     height: 60px;
     border: 0;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.14);
+    background: rgba(248, 247, 247, 0.14);
     display: grid;
     place-content: center;
     gap: 13px;
@@ -64,13 +66,13 @@
     display: grid;
     place-content: center;
     gap: 18px;
-    background-color: transparent;
+    background-color: rgba(0,0,0,0.9);
     background-image: url("../img/hamburger_menu_back.webp");
     background-position: center;
     background-repeat: repeat;
     background-size: contain;
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
     opacity: 0;
     pointer-events: none;
 }
@@ -80,6 +82,9 @@
     color: #fff;
     font-size: clamp(24px, 4vw, 44px);
     text-align: center;
+    text-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.8),
+        0 4px 14px rgba(0, 0, 0, 0.55);
     -webkit-tap-highlight-color: transparent;
 }
 

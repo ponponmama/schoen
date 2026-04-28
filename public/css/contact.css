@@ -1,3 +1,4 @@
+/* お問い合わせはこちらこらのテキスト */
 .contact-content {
     font-size: 24px;
     height: 50px;
@@ -6,11 +7,13 @@
     margin: 10px 20px;
 }
 
+/* お問い合わせフォーム */
 .contact-form {
     width: 1000px;
     padding: 20px;
 }
 
+/* お問い合わせフォーム 親要素 */
 .contact-form-item-wrapper {
     width: 1000px;
     height: 750px;
@@ -25,6 +28,7 @@
     box-shadow: 8px 8px 12px rgba(10, 9, 31, 0.45);
 }
 
+/* お問い合わせフォームlabel＆input*/
 .contact-form-item {
     width: 800px;
     height: 60px;
@@ -34,6 +38,7 @@
     margin-bottom: 15px;
 }
 
+/* お問い合わせフォームlabel */
 .contact-form-label {
     width: 200px;
     height: 60px;
@@ -41,13 +46,20 @@
     font-size: 24px;
 }
 
+/* お問い合わせフォームinput */
 .contact-form-input {
     width: 600px;
     height: 100%;
     padding: 10px;
     border-radius: 10px;
+    height: 60px;
+    line-height: 60px;
+    outline: none;
+    border: 1px solid rgba(10, 9, 31, 0.45);
+    background-color: #fff;
 }
 
+/* お問い合わせフォームlabel＆textarea　親要素*/
 .contact-form-item-textarea {
     width: 800px;
     height: auto;
@@ -57,6 +69,7 @@
     margin-bottom: 15px;
 }
 
+/* お問い合わせフォームtextarea label */
 .textarea-label {
     width: 800px;
     height: 60px;
@@ -65,7 +78,7 @@
     text-align: left;
 }
 
-
+/* お問い合わせフォームtextarea */
 .contact-form-textarea {
     width: 800px;
     height: 350px;
@@ -73,14 +86,7 @@
     border-radius: 10px;
 }
 
-.contact-form-input {
-    height: 60px;
-    line-height: 60px;
-    outline: none;
-    border: 1px solid rgba(10, 9, 31, 0.45);
-    background-color: #fff;
-}
-
+/* お問い合わせフォームbutton */
 .contact-form-button {
     width: 200px;
     height: 70px;
@@ -94,6 +100,7 @@
     margin: 50px auto;
 }
 
+/* お問い合わせフォームバリデーション */
 .error {
     height: 20px;
     line-height: 20px;
@@ -102,6 +109,7 @@
     margin: 0;
 }
 
+/* お問い合わせフォーム レスポンシブ */
 @media screen and (min-width: 540px) and (max-width: 1024px) {
     .contact-form {
         width: 80%;

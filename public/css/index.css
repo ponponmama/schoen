@@ -1,4 +1,4 @@
-/* Top page content wrapper & Top page background image */
+/* Top ページ content wrapper & Top ページ background image */
 .content-wrapper {
     background-image: url(../img/top_528.webp);
     background-position: center;
@@ -6,27 +6,75 @@
     background-repeat: no-repeat;
 }
 
-.page-slot--top {
-    justify-content: center;
-}
-
+/* Top ページ logo wrapper */
 .page-slot--top .logo-wrapper {
-    width: 100%;
-    padding: 50px 100px;
+    --title-line-grad-1: rgba(3, 3, 88, 0.95);
+    --title-line-grad-2: rgba(3, 3, 88, 0.2);
+    position: relative;
+    width: 565px;
+    height: 240px;
+    margin: 50px 100px;
+    padding: 20px;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
+    align-self: flex-start;
+    animation: slideIn 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
+/* logoの外側ライン　左下: 横は左から長く、上への縦は短い */
+.page-slot--top .logo-wrapper::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0.2rem;
+    width: 90%;
+    height: 50%;
+    border: none;
+    background:
+        linear-gradient(180deg, var(--title-line-grad-1), var(--title-line-grad-2)) 0 0 / 3px 100% no-repeat,
+        linear-gradient(90deg, var(--title-line-grad-1), var(--title-line-grad-2)) 0 100% / 100% 3px no-repeat;
+    box-sizing: border-box;
+    transform-origin: left bottom;
+    transform: scale(0, 0);
+    opacity: 0;
+    pointer-events: none;
+    animation: lineCornerBL 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* logoの外側ライン　右上: 横は右から長く、下への縦は短い */
+.page-slot--top .logo-wrapper::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0.2rem;
+    width: 90%;
+    height: 50%;
+    border: none;
+    background:
+        linear-gradient(90deg, var(--title-line-grad-1), var(--title-line-grad-2)) 0 0 / 100% 3px no-repeat,
+        linear-gradient(180deg, var(--title-line-grad-1), var(--title-line-grad-2)) 100% 0 / 3px 100% no-repeat;
+    box-sizing: border-box;
+    transform-origin: right top;
+    transform: scale(0, 0);
+    opacity: 0;
+    pointer-events: none;
+    animation: lineCornerTR 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Top ページ logo image */
 .top-logo {
+    position: relative;
+    z-index: 1;
     display: block;
-    width: 525px;
-    height: 200px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
+/* Top ページ text wrapper */
 .top-text-wrapper {
     width: 100%;
-    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,6 +84,7 @@
     letter-spacing: 0.07em;
 }
 
+/* Top ページ タイトル,店舗紹介文,署名 */
 .top-text-title,
 .top-text-content,
 .top-text-signature {
@@ -43,10 +92,12 @@
     margin: 10px auto;
 }
 
+/* Top ページ 店舗紹介文 */
 .top-text-content {
     text-align: justify;
 }
 
+/* Top ページ 署名 */
 .top-text-signature {
     display: flex;
     height: 30px;
@@ -54,22 +105,24 @@
     justify-content: center;
 }
 
-    .top-text-title,
-    .top-text-content,
-    .top-text-signature-person {
-        font-size: 20px;
-        line-height: 1.2;
-        font-weight: 500;
-    }
+/* Top ページ タイトル,店舗紹介文,署名 フォントサイズ */
+.top-text-title,
+.top-text-content,
+.top-text-signature-person {
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 500;
+}
 
-    .top-text-signature-brand {
-        font-size: 24px;
-        line-height: 1.2;
-        font-weight: 600;
-        margin-right: 10px;
-    }
+/* Top ページ 署名 店舗名 */
+.top-text-signature-brand {
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 600;
+    margin-right: 10px;
+}
 
-
+/* Top ページ ライセンス wrapper */
 .top-text-license-wrapper {
     width: 100%;
     height: auto;
@@ -81,6 +134,7 @@
     margin-top: 80px;
 }
 
+/* Top ページ ライセンス list */
 .top-text-license-list {
     width: 380px;
     height: auto;
@@ -93,6 +147,7 @@
     margin: 0;
 }
 
+/* Top ページ ライセンス item */
 .top-text-license-item {
     font-size: 16px;
     height: 18px;
@@ -101,7 +156,8 @@
     margin: 5px;
     color: #222;
 }
-/* Instagram QR Code wrapper */
+
+/* Top ページ Instagram QR Code wrapper */
 .qr-code-wrapper {
     width: 100%;
     height: auto;
@@ -112,21 +168,20 @@
     padding-right: 50px;
     margin: 80px 0 50px 0;
 }
+
 /* Instagram QR Code image */
 .qr-code {
     width: 135px;
     height: 132px;
 }
 
+/* Top ページ レスポンシブ */
 @media screen and (min-width: 540px) and (max-width: 1024px) {
     .page-slot--top .logo-wrapper {
-        justify-content: center;
-        padding: 15px;
-    }
-
-    .top-logo {
-        width: 300px;
+        width: 50%;
         height: auto;
+        justify-content: center;
+        margin: 30px auto;
     }
 
     .top-text-wrapper {
@@ -182,12 +237,16 @@
 
 @media screen and (max-width: 539px) {
     .page-slot--top .logo-wrapper {
+        width: 80%;
+        height: auto;
+        margin: 30px auto;
         justify-content: center;
+        align-items: center;
         padding: 15px;
     }
 
     .top-logo {
-        width: 300px;
+        width: 100%;
         height: auto;
     }
 

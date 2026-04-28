@@ -8,16 +8,19 @@
     cursor: pointer;
 }
 
+/*　body 共通レイアウト */
 .content-body {
     margin: 0;
     padding: 0;
     width: 100%;
-    min-height: 100vh;
+    height: 100%;
     font-family: "Noto Sans JP", sans-serif;
     font-weight: 700;
     color: #222;
+    box-sizing: border-box;
 }
 
+/* ヘッダー */
 .site-header {
     position: fixed;
     top: 0;
@@ -39,12 +42,14 @@
     backdrop-filter: blur(14px);
 }
 
+/* ヘッダー 背景透過 */
 @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
     .site-header {
         background-color: rgba(0, 0, 0, 0.82);
     }
 }
 
+/* ヘッダー レスポンシブ */
 @media (min-width: 1025px) {
     .site-header {
         width: 100%;
@@ -54,11 +59,13 @@
 
 .content-wrapper {
     width: 100%;
+    height: 100%;
+    min-height: 0;
     background-color: #F7F7FA;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     padding-top: 80px;
 }
 
@@ -69,9 +76,11 @@
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    min-height: calc(100vh - 80px);
+    height: 100%;
+    min-height: 0;
 }
 
+/* 各ページtitle 共通レイアウト */
 .content-title {
     --title-line-grad-1: rgba(3, 3, 88, 0.95);
     --title-line-grad-2: rgba(3, 3, 88, 0.2);
@@ -80,13 +89,13 @@
     font-size: 40px;
     height: 80px;
     line-height: 80px;
-    margin: 20px auto;
+    margin: 50px auto;
     padding: 0 20px;
     text-align: center;
     animation: slideIn 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* 左下: 横は左から長く、上への縦は短い */
+/* 各ページtitle 外側ライン　左下: 横は左から長く、上への縦は短い */
 .content-title::before {
     content: "";
     position: absolute;
@@ -106,7 +115,7 @@
     animation: lineCornerBL 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* 右上: 横は右から長く、下への縦は短い */
+/* 各ページtitle 外側ライン　右上: 横は右から長く、下への縦は短い */
 .content-title::after {
     content: "";
     position: absolute;
@@ -126,6 +135,7 @@
     animation: lineCornerTR 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
+/* 各ページtitle アニメーション */
 @keyframes slideIn {
     0% {
         transform: translateX(180px);
@@ -139,6 +149,7 @@
     }
 }
 
+/* 各ページtitle 外側ライン　右上 アニメーション */
 @keyframes lineCornerTR {
     0% {
         transform: scale(0, 0);
@@ -150,6 +161,7 @@
     }
 }
 
+/* 各ページtitle 外側ライン　左下 アニメーション */
 @keyframes lineCornerBL {
     0% {
         transform: scale(0, 0);
@@ -161,6 +173,7 @@
     }
 }
 
+/* 各ページtitle レスポンシブ */
 @media screen and (max-width: 539px) {
     .content-title {
         font-size: 24px;
