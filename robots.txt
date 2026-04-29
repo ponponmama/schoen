@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ech-schoen.sakura.ne.jp/sitemap.xml
+Sitemap: https://ech-schoen.sakura.ne.jp/sitemap2.xml
