@@ -1,6 +1,40 @@
 <?php
 declare(strict_types=1);
 
+/**
+ * メール送信設定（本番）
+ *
+ * $mailTo … 問い合わせを届けたい受信アドレス（Gmail 等）
+ * $mailFrom … 送信元From（さくらのドメインメール必須。迷惑判定・SMTP認証との整合）
+ * Gmail だけ $to にしても SPF/DKIM 未設定だと Gmail 側でブロックされます。
+ * さくらのサーバパネルでドメインの SPF / DKIM を有効にしてから運用すること。
+ */
+
+/** 主に確認する受信箱（シェーン・Gmail） */
+$mailTo = "schoen.service.0241@gmail.com";
+
+/** さくらWebメールにも同文面を送る場合の宛先（任意）。空なら $mailTo のみ。
+ *  Note: FromとToが同一になりやすい宛先へ2通目を別送すると捨てられる環境があるため、
+ *  宛先はカンマ区切り1通で送る（両方のメールに双方アドレスが見える） */
+$mailCcInternal = "postmaster@ech-schoen.sakura.ne.jp";
+
+/** サイトのドメイン上に存在する送信元（postmaster でなくても可） */
+$mailFrom = "postmaster@ech-schoen.sakura.ne.jp";
+
+/**
+ * @param array<string, mixed> $context
+ */
+function contactMailDebugLog(string $event, array $context = []): void
+{
+    $dir = __DIR__ . "/logs";
+    if (!is_dir($dir)) {
+        @mkdir($dir, 0750, true);
+    }
+    $payload = array_merge(["event" => $event, "ts" => date("c")], $context);
+    $line = json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . "\n";
+    @file_put_contents($dir . "/contact-mail.log", $line, FILE_APPEND | LOCK_EX);
+}
+
 mb_language("uni");
 mb_internal_encoding("UTF-8");
 
@@ -57,7 +91,6 @@ if ($errors !== []) {
     exit;
 }
 
-$to = "postmaster@ech-schoen.sakura.ne.jp";
 $subject = "【Euro Car Haus Schoen】お問い合わせ";
 
 $mailBody = <<<EOT
@@ -73,14 +106,26 @@ $mailBody = <<<EOT
 {$message}
 EOT;
 
-$from = "postmaster@ech-schoen.sakura.ne.jp";
-$headers = [
-    "From: Euro Car Haus Schoen <{$from}>",
+$headerLines = implode("\r\n", [
+    "MIME-Version: 1.0",
+    "From: Euro Car Haus Schoen <{$mailFrom}>",
     "Reply-To: {$email}",
     "Content-Type: text/plain; charset=UTF-8",
-];
+]);
 
-$sent = mb_send_mail($to, $subject, $mailBody, implode("\r\n", $headers), "-f{$from}");
+$toEnvelope = $mailTo;
+if ($mailCcInternal !== "" && strcasecmp($mailCcInternal, $mailTo) !== 0) {
+    $toEnvelope = "{$mailTo}, {$mailCcInternal}";
+}
+
+$sent = mb_send_mail($toEnvelope, $subject, $mailBody, $headerLines, "-f{$mailFrom}");
+
+contactMailDebugLog("mb_send_mail", [
+    "ok" => $sent,
+    "to_envelope" => $toEnvelope,
+    "from" => $mailFrom,
+    "sendmail_path" => ini_get("sendmail_path") ?: "",
+]);
 
 if (!$sent) {
     http_response_code(500);
