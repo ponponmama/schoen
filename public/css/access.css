@@ -1,8 +1,3 @@
-.page-slot {
-    min-height: calc(100vh - 80px);
-    min-height: calc(100dvh - 80px);
-}
-
 .access-hero {
     position: relative;
     display: flex;
